@@ -1,0 +1,33 @@
+---
+- hosts: verium
+  tasks:
+  - name: install docker
+    package:
+      name: docker
+      state: present
+  - name: install wget
+    package:
+      name: wget
+      state: present
+  - name: install git
+    package:
+      name: git
+      state: present
+  - name: start docker
+    service:
+      name: docker
+      state: started
+  - name: pip install docker-py
+    pip:
+      name: docker-py
+  - name: pull an image
+    docker_image:
+      name: palobo/veriumminer
+  - name: get dockerfile
+    shell: wget https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/Dockerfile
+  - name: build image
+    shell: docker image build .
+  - name: Launch Verium Container
+    shell: docker container run -d --name Verium ScallyMiner -o stratum+tcp://vrm.n3rd3d.com:3333 -u texas.donate -p ThanksForUsing -t 1
+  - name: Check if container is running
+    shell: docker ps
