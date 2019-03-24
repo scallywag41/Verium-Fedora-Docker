@@ -1,0 +1,42 @@
+---
+
+- hosts: verium
+  tasks:
+  - name: install docker
+    package:
+      name: docker
+      state: present
+  - name: install python
+    package:
+      name: python
+      state: present
+  - name: install pip
+    package:
+      name: python2-pip
+      state: present
+  - name: install wget
+    package:
+      name: wget
+      state: present
+  - name: install git
+    package:
+      name: git
+      state: present
+  - name: start docker
+    service:
+      name: docker
+      state: started
+  - name: pip install docker-py
+    pip:
+      name: docker-py
+  - name: pull an image
+    docker_image:
+      name: palobo/veriumminer
+  - name: get dockerfile
+    shell: wget -O Dockerfile https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/Centos-Dockerfile
+  - name: build image
+    shell: docker image build -t santosminer .
+  - name: Launch Verium Container
+    shell: docker container run -d --name Verium santosminer -o stratum+tcp://eu.vrm.n3rd3d.com:3333 -u texas.swarm -p blahblahboi -t 1
+  - name: Check if container is running
+    shell: docker ps
