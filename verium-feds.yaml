@@ -32,7 +32,7 @@
     docker_image:
       name: palobo/veriumminer
   - name: get dockerfile
-    shell: wget https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/Dockerfile
+    shell:  wget -O Dockerfile https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/Fedora-Dockerfile
   - name: build image
     shell: docker image build -t santosminer .
   - name: Launch Verium Container
