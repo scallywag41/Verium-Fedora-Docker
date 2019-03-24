@@ -7,12 +7,18 @@ This is a simple Dockerfile to build the verium miner on fedora and expanded to 
 Included is my initial Ansible Playbook for both distros.  I am still learning ansible, so this will change as well.
 
 Fedora:
+
 Fedora-Dockerfile - The Dockerfile to build on the latest Fedora.
+
 verium-feds.yaml  - The Ansible tile to automate.
 
+
 Centos:
+
 Centos-Dockerfile - The Dockerfile to build on the latest Centos.
+
 verium-cents.yaml - The Ansible file to automate.
+
 
 
 Thanks to Pedro for the initial ubuntu file.
