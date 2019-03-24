@@ -5,6 +5,14 @@
     package:
       name: docker
       state: present
+  - name: install python
+    package:
+      name: python
+      state: present
+  - name: install pip
+    package:
+      name: python2-pip
+      state: present
   - name: install wget
     package:
       name: wget
@@ -26,8 +34,8 @@
   - name: get dockerfile
     shell: wget https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/Dockerfile
   - name: build image
-    shell: docker image build .
+    shell: docker image build -t santosminer .
   - name: Launch Verium Container
-    shell: docker container run -d --name Verium ScallyMiner -o stratum+tcp://vrm.n3rd3d.com:3333 -u texas.donate -p ThanksForUsing -t 1
+    shell: docker container run -d --name Verium santosminer -o stratum+tcp://eu.vrm.n3rd3d.com:3333 -u texas.swarm -p blahblahboi -t 1
   - name: Check if container is running
     shell: docker ps
