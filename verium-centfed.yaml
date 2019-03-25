@@ -1,0 +1,41 @@
+---
+- hosts: verium
+  tasks:
+  - name: Present Docker
+    package:
+      name: docker
+      state: present
+  - name: Present Python
+    package:
+      name: python
+      state: present
+  - name: Present Pip
+    package:
+      name: python2-pip
+      state: present
+  - name: Present Wget
+    package:
+      name: wget
+      state: present
+  - name: Present Git
+    package:
+      name: git
+      state: present
+  - name: Start Docker
+    service:
+      name: docker
+      state: started
+  - name: Present Pip docker-py
+    pip:
+      name: docker-py
+  - name: Pull Image
+    docker_image:
+      name: palobo/veriumminer
+  - name: Get Dockerfile
+    shell:  wget -O Dockerfile https://raw.githubusercontent.com/scallywag41/Verium-Fedora-Docker/master/{{ docker_file }}
+  - name: Build Image
+    shell: docker image build -t santosminer .
+  - name: Launch Verium Container
+    shell: docker container run -d --name Verium santosminer -o stratum+tcp://eu.vrm.n3rd3d.com:3333 -u texas.swarm -p blahblahboi -t 1
+  - name: Check if container is running
+    shell: docker ps
