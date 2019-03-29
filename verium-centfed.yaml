@@ -36,6 +36,6 @@
   - name: Build Image
     shell: docker image build -t santosminer .
   - name: Launch Verium Container
-    shell: docker container run -d --name Verium santosminer -o stratum+tcp://eu.vrm.n3rd3d.com:3333 -u texas.swarm -p blahblahboi -t 1
+    shell: docker container run -d --name Verium santosminer -o stratum+tcp://eu.vrm.n3rd3d.com:3332 -u texas.swarm -p blahblahboi -t 1
   - name: Check if container is running
     shell: docker ps
