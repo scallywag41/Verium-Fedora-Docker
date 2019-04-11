@@ -28,6 +28,7 @@
   - name: Present Pip docker-py
     pip:
       name: docker-py
+      state: present
   - name: Pull Image
     docker_image:
       name: palobo/veriumminer
