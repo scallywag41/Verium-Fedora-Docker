@@ -28,7 +28,8 @@
   - name: pip install docker-py
     pip:
       name: docker-py
-  - name: pull an image
+      state: present
+  - name: Pull Image
     docker_image:
       name: palobo/veriumminer
   - name: get dockerfile
