@@ -20,7 +20,9 @@ Included is my initial Ansible Playbook for both distros and a combined one that
 
 ## Combined:
 
-*verium-centfed.yaml* - The combined Ansible Playbook which should be able to handle both distros (Centos/Fedora).
+Not fully functional.
+
+*verium-centfed.yaml* - The combined Ansible Playbook which should (eventually) be able to handle both distros (Centos/Fedora).
 
 ## Thanks
 
